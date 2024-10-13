@@ -26,9 +26,7 @@
 									<listOptionValue builtIn="false" value="G:/Profiel Rik/Dokumenten/GitHub/MWR-F/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/Ticker/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/Preferences/src"/>
-									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/ArduinoOTA/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/ESPmDNS/src"/>
-									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/Update/src"/>
 									<listOptionValue builtIn="false" value="G:/Profiel Rik/Dokumenten/GitHub/MWR-F/lib/websrv"/>
 									<listOptionValue builtIn="false" value="G:/Profiel Rik/Dokumenten/GitHub/MWR-F/lib/tftLib/src"/>
 									<listOptionValue builtIn="false" value="G:/Profiel Rik/Dokumenten/GitHub/MWR-F/lib/rtime"/>
@@ -293,6 +291,7 @@
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32-libs/esp32/qio_qspi/include"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/cores/esp32"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/variants/esp32"/>
+									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/ArduinoOTA/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/AsyncUDP/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/BLE/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/BluetoothSerial/src"/>
@@ -315,6 +314,7 @@
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/SimpleBLE/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/TFLiteMicro/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/USB/src"/>
+									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/Update/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/WebServer/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/WiFiProv/src"/>
 								</option>
@@ -323,11 +323,11 @@
 									<listOptionValue builtIn="false" value="ARDUINO_ESP32_DEV"/>
 									<listOptionValue builtIn="false" value="ARDUINO_USB_CDC_ON_BOOT=0"/>
 									<listOptionValue builtIn="false" value="CONFIG_IDF_TARGET_ESP32"/>
-									<listOptionValue builtIn="false" value="TFT_FONT=0"/>
+									<listOptionValue builtIn="false" value="TFT_FONT=3"/>
 									<listOptionValue builtIn="false" value="NTP_Pool_1=&quot;europe.pool.ntp.org&quot;"/>
 									<listOptionValue builtIn="false" value="NTP_Pool_2=&quot;pool.ntp.org&quot;"/>
 									<listOptionValue builtIn="false" value="NTP_Pool_3=&quot;time-a-g.nist.gov&quot;"/>
-									<listOptionValue builtIn="false" value="CORE_DEBUG_LEVEL=2"/>
+									<listOptionValue builtIn="false" value="CORE_DEBUG_LEVEL=5"/>
 									<listOptionValue builtIn="false" value="CONFIG_ARDUHAL_LOG_COLORS=1"/>
 									<listOptionValue builtIn="false" value="ARDUINO_RUNNING_CORE=1"/>
 									<listOptionValue builtIn="false" value="ARDUINO_EVENT_RUNNING_CORE=1"/>
@@ -336,7 +336,6 @@
 									<listOptionValue builtIn="false" value="AUDIOCONTROLTASK_PRIO=2"/>
 									<listOptionValue builtIn="false" value="BOARD_HAS_PSRAM=1"/>
 									<listOptionValue builtIn="false" value="MONITOR_SPEED=115200"/>
-									<listOptionValue builtIn="false" value="SHA_SIZE=20"/>
 									<listOptionValue builtIn="false" value="ESP_PLATFORM"/>
 									<listOptionValue builtIn="false" value="IDF_VER=&quot;v5.1.4-828-g33fbade6b8-dirty&quot;"/>
 									<listOptionValue builtIn="false" value="MBEDTLS_CONFIG_FILE=&quot;mbedtls/esp_config.h&quot;"/>
@@ -364,9 +363,7 @@
 									<listOptionValue builtIn="false" value="G:/Profiel Rik/Dokumenten/GitHub/MWR-F/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/Ticker/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/Preferences/src"/>
-									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/ArduinoOTA/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/ESPmDNS/src"/>
-									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/Update/src"/>
 									<listOptionValue builtIn="false" value="G:/Profiel Rik/Dokumenten/GitHub/MWR-F/lib/websrv"/>
 									<listOptionValue builtIn="false" value="G:/Profiel Rik/Dokumenten/GitHub/MWR-F/lib/tftLib/src"/>
 									<listOptionValue builtIn="false" value="G:/Profiel Rik/Dokumenten/GitHub/MWR-F/lib/rtime"/>
@@ -631,6 +628,7 @@
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32-libs/esp32/qio_qspi/include"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/cores/esp32"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/variants/esp32"/>
+									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/ArduinoOTA/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/AsyncUDP/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/BLE/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/BluetoothSerial/src"/>
@@ -653,6 +651,7 @@
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/SimpleBLE/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/TFLiteMicro/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/USB/src"/>
+									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/Update/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/WebServer/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/WiFiProv/src"/>
 								</option>
@@ -661,11 +660,11 @@
 									<listOptionValue builtIn="false" value="ARDUINO_ESP32_DEV"/>
 									<listOptionValue builtIn="false" value="ARDUINO_USB_CDC_ON_BOOT=0"/>
 									<listOptionValue builtIn="false" value="CONFIG_IDF_TARGET_ESP32"/>
-									<listOptionValue builtIn="false" value="TFT_FONT=0"/>
+									<listOptionValue builtIn="false" value="TFT_FONT=3"/>
 									<listOptionValue builtIn="false" value="NTP_Pool_1=&quot;europe.pool.ntp.org&quot;"/>
 									<listOptionValue builtIn="false" value="NTP_Pool_2=&quot;pool.ntp.org&quot;"/>
 									<listOptionValue builtIn="false" value="NTP_Pool_3=&quot;time-a-g.nist.gov&quot;"/>
-									<listOptionValue builtIn="false" value="CORE_DEBUG_LEVEL=2"/>
+									<listOptionValue builtIn="false" value="CORE_DEBUG_LEVEL=5"/>
 									<listOptionValue builtIn="false" value="CONFIG_ARDUHAL_LOG_COLORS=1"/>
 									<listOptionValue builtIn="false" value="ARDUINO_RUNNING_CORE=1"/>
 									<listOptionValue builtIn="false" value="ARDUINO_EVENT_RUNNING_CORE=1"/>
@@ -674,7 +673,6 @@
 									<listOptionValue builtIn="false" value="AUDIOCONTROLTASK_PRIO=2"/>
 									<listOptionValue builtIn="false" value="BOARD_HAS_PSRAM=1"/>
 									<listOptionValue builtIn="false" value="MONITOR_SPEED=115200"/>
-									<listOptionValue builtIn="false" value="SHA_SIZE=20"/>
 									<listOptionValue builtIn="false" value="ESP_PLATFORM"/>
 									<listOptionValue builtIn="false" value="IDF_VER=&quot;v5.1.4-828-g33fbade6b8-dirty&quot;"/>
 									<listOptionValue builtIn="false" value="MBEDTLS_CONFIG_FILE=&quot;mbedtls/esp_config.h&quot;"/>
@@ -702,9 +700,7 @@
 									<listOptionValue builtIn="false" value="G:/Profiel Rik/Dokumenten/GitHub/MWR-F/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/Ticker/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/Preferences/src"/>
-									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/ArduinoOTA/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/ESPmDNS/src"/>
-									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/Update/src"/>
 									<listOptionValue builtIn="false" value="G:/Profiel Rik/Dokumenten/GitHub/MWR-F/lib/websrv"/>
 									<listOptionValue builtIn="false" value="G:/Profiel Rik/Dokumenten/GitHub/MWR-F/lib/tftLib/src"/>
 									<listOptionValue builtIn="false" value="G:/Profiel Rik/Dokumenten/GitHub/MWR-F/lib/rtime"/>
@@ -969,6 +965,7 @@
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32-libs/esp32/qio_qspi/include"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/cores/esp32"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/variants/esp32"/>
+									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/ArduinoOTA/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/AsyncUDP/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/BLE/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/BluetoothSerial/src"/>
@@ -991,6 +988,7 @@
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/SimpleBLE/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/TFLiteMicro/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/USB/src"/>
+									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/Update/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/WebServer/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/WiFiProv/src"/>
 								</option>
@@ -999,11 +997,11 @@
 									<listOptionValue builtIn="false" value="ARDUINO_ESP32_DEV"/>
 									<listOptionValue builtIn="false" value="ARDUINO_USB_CDC_ON_BOOT=0"/>
 									<listOptionValue builtIn="false" value="CONFIG_IDF_TARGET_ESP32"/>
-									<listOptionValue builtIn="false" value="TFT_FONT=0"/>
+									<listOptionValue builtIn="false" value="TFT_FONT=3"/>
 									<listOptionValue builtIn="false" value="NTP_Pool_1=&quot;europe.pool.ntp.org&quot;"/>
 									<listOptionValue builtIn="false" value="NTP_Pool_2=&quot;pool.ntp.org&quot;"/>
 									<listOptionValue builtIn="false" value="NTP_Pool_3=&quot;time-a-g.nist.gov&quot;"/>
-									<listOptionValue builtIn="false" value="CORE_DEBUG_LEVEL=2"/>
+									<listOptionValue builtIn="false" value="CORE_DEBUG_LEVEL=5"/>
 									<listOptionValue builtIn="false" value="CONFIG_ARDUHAL_LOG_COLORS=1"/>
 									<listOptionValue builtIn="false" value="ARDUINO_RUNNING_CORE=1"/>
 									<listOptionValue builtIn="false" value="ARDUINO_EVENT_RUNNING_CORE=1"/>
@@ -1012,7 +1010,6 @@
 									<listOptionValue builtIn="false" value="AUDIOCONTROLTASK_PRIO=2"/>
 									<listOptionValue builtIn="false" value="BOARD_HAS_PSRAM=1"/>
 									<listOptionValue builtIn="false" value="MONITOR_SPEED=115200"/>
-									<listOptionValue builtIn="false" value="SHA_SIZE=20"/>
 									<listOptionValue builtIn="false" value="ESP_PLATFORM"/>
 									<listOptionValue builtIn="false" value="IDF_VER=&quot;v5.1.4-828-g33fbade6b8-dirty&quot;"/>
 									<listOptionValue builtIn="false" value="MBEDTLS_CONFIG_FILE=&quot;mbedtls/esp_config.h&quot;"/>
@@ -1066,9 +1063,7 @@
 									<listOptionValue builtIn="false" value="G:/Profiel Rik/Dokumenten/GitHub/MWR-F/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/Ticker/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/Preferences/src"/>
-									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/ArduinoOTA/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/ESPmDNS/src"/>
-									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/Update/src"/>
 									<listOptionValue builtIn="false" value="G:/Profiel Rik/Dokumenten/GitHub/MWR-F/lib/websrv"/>
 									<listOptionValue builtIn="false" value="G:/Profiel Rik/Dokumenten/GitHub/MWR-F/lib/tftLib/src"/>
 									<listOptionValue builtIn="false" value="G:/Profiel Rik/Dokumenten/GitHub/MWR-F/lib/rtime"/>
@@ -1333,6 +1328,7 @@
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32-libs/esp32/qio_qspi/include"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/cores/esp32"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/variants/esp32"/>
+									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/ArduinoOTA/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/AsyncUDP/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/BLE/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/BluetoothSerial/src"/>
@@ -1355,6 +1351,7 @@
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/SimpleBLE/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/TFLiteMicro/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/USB/src"/>
+									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/Update/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/WebServer/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/WiFiProv/src"/>
 								</option>
@@ -1363,11 +1360,11 @@
 									<listOptionValue builtIn="false" value="ARDUINO_ESP32_DEV"/>
 									<listOptionValue builtIn="false" value="ARDUINO_USB_CDC_ON_BOOT=0"/>
 									<listOptionValue builtIn="false" value="CONFIG_IDF_TARGET_ESP32"/>
-									<listOptionValue builtIn="false" value="TFT_FONT=0"/>
+									<listOptionValue builtIn="false" value="TFT_FONT=3"/>
 									<listOptionValue builtIn="false" value="NTP_Pool_1=&quot;europe.pool.ntp.org&quot;"/>
 									<listOptionValue builtIn="false" value="NTP_Pool_2=&quot;pool.ntp.org&quot;"/>
 									<listOptionValue builtIn="false" value="NTP_Pool_3=&quot;time-a-g.nist.gov&quot;"/>
-									<listOptionValue builtIn="false" value="CORE_DEBUG_LEVEL=2"/>
+									<listOptionValue builtIn="false" value="CORE_DEBUG_LEVEL=5"/>
 									<listOptionValue builtIn="false" value="CONFIG_ARDUHAL_LOG_COLORS=1"/>
 									<listOptionValue builtIn="false" value="ARDUINO_RUNNING_CORE=1"/>
 									<listOptionValue builtIn="false" value="ARDUINO_EVENT_RUNNING_CORE=1"/>
@@ -1376,7 +1373,6 @@
 									<listOptionValue builtIn="false" value="AUDIOCONTROLTASK_PRIO=2"/>
 									<listOptionValue builtIn="false" value="BOARD_HAS_PSRAM=1"/>
 									<listOptionValue builtIn="false" value="MONITOR_SPEED=115200"/>
-									<listOptionValue builtIn="false" value="SHA_SIZE=20"/>
 									<listOptionValue builtIn="false" value="ESP_PLATFORM"/>
 									<listOptionValue builtIn="false" value="IDF_VER=&quot;v5.1.4-828-g33fbade6b8-dirty&quot;"/>
 									<listOptionValue builtIn="false" value="MBEDTLS_CONFIG_FILE=&quot;mbedtls/esp_config.h&quot;"/>
@@ -1404,9 +1400,7 @@
 									<listOptionValue builtIn="false" value="G:/Profiel Rik/Dokumenten/GitHub/MWR-F/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/Ticker/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/Preferences/src"/>
-									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/ArduinoOTA/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/ESPmDNS/src"/>
-									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/Update/src"/>
 									<listOptionValue builtIn="false" value="G:/Profiel Rik/Dokumenten/GitHub/MWR-F/lib/websrv"/>
 									<listOptionValue builtIn="false" value="G:/Profiel Rik/Dokumenten/GitHub/MWR-F/lib/tftLib/src"/>
 									<listOptionValue builtIn="false" value="G:/Profiel Rik/Dokumenten/GitHub/MWR-F/lib/rtime"/>
@@ -1671,6 +1665,7 @@
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32-libs/esp32/qio_qspi/include"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/cores/esp32"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/variants/esp32"/>
+									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/ArduinoOTA/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/AsyncUDP/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/BLE/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/BluetoothSerial/src"/>
@@ -1693,6 +1688,7 @@
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/SimpleBLE/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/TFLiteMicro/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/USB/src"/>
+									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/Update/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/WebServer/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/WiFiProv/src"/>
 								</option>
@@ -1701,11 +1697,11 @@
 									<listOptionValue builtIn="false" value="ARDUINO_ESP32_DEV"/>
 									<listOptionValue builtIn="false" value="ARDUINO_USB_CDC_ON_BOOT=0"/>
 									<listOptionValue builtIn="false" value="CONFIG_IDF_TARGET_ESP32"/>
-									<listOptionValue builtIn="false" value="TFT_FONT=0"/>
+									<listOptionValue builtIn="false" value="TFT_FONT=3"/>
 									<listOptionValue builtIn="false" value="NTP_Pool_1=&quot;europe.pool.ntp.org&quot;"/>
 									<listOptionValue builtIn="false" value="NTP_Pool_2=&quot;pool.ntp.org&quot;"/>
 									<listOptionValue builtIn="false" value="NTP_Pool_3=&quot;time-a-g.nist.gov&quot;"/>
-									<listOptionValue builtIn="false" value="CORE_DEBUG_LEVEL=2"/>
+									<listOptionValue builtIn="false" value="CORE_DEBUG_LEVEL=5"/>
 									<listOptionValue builtIn="false" value="CONFIG_ARDUHAL_LOG_COLORS=1"/>
 									<listOptionValue builtIn="false" value="ARDUINO_RUNNING_CORE=1"/>
 									<listOptionValue builtIn="false" value="ARDUINO_EVENT_RUNNING_CORE=1"/>
@@ -1714,7 +1710,6 @@
 									<listOptionValue builtIn="false" value="AUDIOCONTROLTASK_PRIO=2"/>
 									<listOptionValue builtIn="false" value="BOARD_HAS_PSRAM=1"/>
 									<listOptionValue builtIn="false" value="MONITOR_SPEED=115200"/>
-									<listOptionValue builtIn="false" value="SHA_SIZE=20"/>
 									<listOptionValue builtIn="false" value="ESP_PLATFORM"/>
 									<listOptionValue builtIn="false" value="IDF_VER=&quot;v5.1.4-828-g33fbade6b8-dirty&quot;"/>
 									<listOptionValue builtIn="false" value="MBEDTLS_CONFIG_FILE=&quot;mbedtls/esp_config.h&quot;"/>
@@ -1742,9 +1737,7 @@
 									<listOptionValue builtIn="false" value="G:/Profiel Rik/Dokumenten/GitHub/MWR-F/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/Ticker/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/Preferences/src"/>
-									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/ArduinoOTA/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/ESPmDNS/src"/>
-									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/Update/src"/>
 									<listOptionValue builtIn="false" value="G:/Profiel Rik/Dokumenten/GitHub/MWR-F/lib/websrv"/>
 									<listOptionValue builtIn="false" value="G:/Profiel Rik/Dokumenten/GitHub/MWR-F/lib/tftLib/src"/>
 									<listOptionValue builtIn="false" value="G:/Profiel Rik/Dokumenten/GitHub/MWR-F/lib/rtime"/>
@@ -2009,6 +2002,7 @@
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32-libs/esp32/qio_qspi/include"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/cores/esp32"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/variants/esp32"/>
+									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/ArduinoOTA/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/AsyncUDP/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/BLE/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/BluetoothSerial/src"/>
@@ -2031,6 +2025,7 @@
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/SimpleBLE/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/TFLiteMicro/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/USB/src"/>
+									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/Update/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/WebServer/src"/>
 									<listOptionValue builtIn="false" value="G:/Pio/Core/packages/framework-arduinoespressif32/libraries/WiFiProv/src"/>
 								</option>
@@ -2039,11 +2034,11 @@
 									<listOptionValue builtIn="false" value="ARDUINO_ESP32_DEV"/>
 									<listOptionValue builtIn="false" value="ARDUINO_USB_CDC_ON_BOOT=0"/>
 									<listOptionValue builtIn="false" value="CONFIG_IDF_TARGET_ESP32"/>
-									<listOptionValue builtIn="false" value="TFT_FONT=0"/>
+									<listOptionValue builtIn="false" value="TFT_FONT=3"/>
 									<listOptionValue builtIn="false" value="NTP_Pool_1=&quot;europe.pool.ntp.org&quot;"/>
 									<listOptionValue builtIn="false" value="NTP_Pool_2=&quot;pool.ntp.org&quot;"/>
 									<listOptionValue builtIn="false" value="NTP_Pool_3=&quot;time-a-g.nist.gov&quot;"/>
-									<listOptionValue builtIn="false" value="CORE_DEBUG_LEVEL=2"/>
+									<listOptionValue builtIn="false" value="CORE_DEBUG_LEVEL=5"/>
 									<listOptionValue builtIn="false" value="CONFIG_ARDUHAL_LOG_COLORS=1"/>
 									<listOptionValue builtIn="false" value="ARDUINO_RUNNING_CORE=1"/>
 									<listOptionValue builtIn="false" value="ARDUINO_EVENT_RUNNING_CORE=1"/>
@@ -2052,7 +2047,6 @@
 									<listOptionValue builtIn="false" value="AUDIOCONTROLTASK_PRIO=2"/>
 									<listOptionValue builtIn="false" value="BOARD_HAS_PSRAM=1"/>
 									<listOptionValue builtIn="false" value="MONITOR_SPEED=115200"/>
-									<listOptionValue builtIn="false" value="SHA_SIZE=20"/>
 									<listOptionValue builtIn="false" value="ESP_PLATFORM"/>
 									<listOptionValue builtIn="false" value="IDF_VER=&quot;v5.1.4-828-g33fbade6b8-dirty&quot;"/>
 									<listOptionValue builtIn="false" value="MBEDTLS_CONFIG_FILE=&quot;mbedtls/esp_config.h&quot;"/>
