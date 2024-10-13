@@ -1,31 +1,33 @@
 // created: 10.Feb.2022
-// updated: 12.Oct 2024
+// updated: 10.Oct 2024
 
 #pragma once
 #pragma GCC optimize("Os") // optimize for code size
 // clang-format off
-#define _SSID                   "mySSID"                        // Your WiFi credentials here
-#define _PW                     "myWiFiPassword"                // Or in textfile on SD-card
-#define DECODER                 1                               // (1)MAX98357A PCM5102A CS4344... (2)AC101, (3)ES8388
-#define TFT_CONTROLLER          5                               // (0)ILI9341, (1)HX8347D, (2)ILI9486a, (3)ILI9486b, (4)ILI9488, (5)ST7796, (6)ST7796RPI
-#define DISPLAY_INVERSION       0                               // (0) off (1) on
-#define TFT_ROTATION            1                               // 1 or 3 (landscape)
-#define TFT_FREQUENCY           40000000                        // 80000000, 40000000, 27000000, 20000000, 10000000
-#define TP_VERSION              5                               // (0)ILI9341, (1)ILI9341RPI, (2)HX8347D, (3)ILI9486, (4)ILI9488, (5)ST7796, (3)ST7796RPI
-#define TP_ROTATION             1                               // 1 or 3 (landscape)
-#define TP_H_MIRROR             0                               // (0) default, (1) mirror up <-> down
-#define TP_V_MIRROR             0                               // (0) default, (1) mittor left <-> right
-#define I2S_COMM_FMT            0                               // (0) MAX98357A PCM5102A CS4344, (1) LSBJ (Least Significant Bit Justified format) PT8211
-#define SDMMC_FREQUENCY         80000000                        // 80000000 or 40000000 MHz
-#define FTP_USERNAME            "esp32"                         // user and pw in FTP Client
-#define FTP_PASSWORD            "esp32"
-#define CONN_TIMEOUT            2500                            // unencrypted connection timeout in ms (http://...)
-#define CONN_TIMEOUT_SSL        3500                            // encrypted connection timeout in ms (https://...)
+//#define _SSID               ""                        // Your WiFi credentials here
+//#define _PW                 ""
+#define _SSID               ""                        // Your WiFi credentials here
+#define _PW                 ""
+#define DECODER             3                               // (0)VS1053 , (1)MAX98357A PCM5102A... (2)AC101 (3)ES8388 (4)WM8978
+#define TFT_CONTROLLER      3                              // (0)ILI9341, (1)HX8347D, (2)ILI9486a, (3)ILI9486b, (4)ILI9488
+#define DISPLAY_INVERSION   0                               // (0) off (1) on
+#define TFT_ROTATION        3                               // 1 or 3 (landscape)
+#define TFT_FREQUENCY       20000000                        // 80000000, 40000000, 27000000, 20000000, 10000000
+#define TP_VERSION          3                               // (0)ILI9341, (1)ILI9341RPI, (2)HX8347D, (3)ILI9486, (4)ILI9488, (5)ST7796, (3)ST7796RPI
+#define TP_ROTATION         3                               // 1 or 3 (landscape)
+#define TP_H_MIRROR         0                               // (0) default, (1) mirror up <-> down
+#define TP_V_MIRROR         0                               // (0) default, (1) mittor left <-> right
+#define I2S_COMM_FMT        0                               // (0) MAX98357A PCM5102A CS4344, (1) LSBJ (Least Significant Bit Justified format) PT8211
+#define SDMMC_FREQUENCY     40000000                        // 80000000 or 40000000 MHz
+#define FTP_USERNAME        "esp32"                         // user and pw in FTP Client
+#define FTP_PASSWORD        "esp32"
+#define CONN_TIMEOUT        2500                            // unencrypted connection timeout in ms (http://...)
+#define CONN_TIMEOUT_SSL    3500                            // encrypted connection timeout in ms (https://...)
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
+#include <vector>
 #include <Arduino.h>
-#include <ArduinoOTA.h>
+// #include <ArduinoOTA.h>
 #include <Preferences.h>
 #include <Ticker.h>
 #include <SPI.h>
@@ -37,7 +39,6 @@
 #include <WiFiClient.h>
 #include <WiFiClientSecure.h>
 #include <WiFiMulti.h>
-#include <vector>
 #include "index.h"
 #include "index.js.h"
 #include "accesspoint.h"
@@ -57,35 +58,35 @@
 
 #ifdef CONFIG_IDF_TARGET_ESP32
     // Digital I/O used
-        #define TFT_CS             22
-        #define TFT_DC             21
-        #define TFT_BL             12  // at -1 the brightness menu is not displayed
-        #define TP_IRQ             39  // VN
-        #define TP_CS               5
-        #define SD_MMC_D0           2  // cannot be changed
-        #define SD_MMC_CLK         14  // cannot be changed
-        #define SD_MMC_CMD         15  // cannot be changed
-        #define IR_PIN             35  // IR Receiver (if available)
-        #define TFT_MOSI           23  // TFT and TP (VSPI)
-        #define TFT_MISO           19  // TFT and TP (VSPI)
-        #define TFT_SCK            18  // TFT and TP (VSPI)
+        #define TFT_CS        22   //CHECK was 22
+        #define TFT_DC         5   //CHECK  was 5
+        #define TFT_BL        -1  //  at -1 the brightness menu is not displayed
+        #define TP_IRQ         0 //was 0 dit is GPIO0 !!!was 12 maar TP werkte NIET//rik nog te testen 13 hier.te verwisselen met 12 nu op tp-cs  39 en/of 36 is laatste kans
+        #define TP_CS         13  	//was 13    //rik nog te testen: 12 hier.  verwisselen met 13 nu op tp-irq
+        #define SD_MMC_D0      2  // cannot be changed 2
+        #define SD_MMC_CLK    14  // cannot be changed  14
+        #define SD_MMC_CMD    15  // cannot be changed  15
+        #define IR_PIN        -1  //rik stond op -1  was ooit 35 nu 36
+        #define TFT_MOSI      23  // TFT and TP (VSPI) 23
+        #define TFT_MISO      19  // TFT and TP (VSPI)  19
+        #define TFT_SCK       18  // TFT and TP (VSPI) 18
 
-        #define I2S_DOUT           25
-        #define I2S_BCLK           27
-        #define I2S_LRC            26
-        #define I2S_MCLK            0  // mostly not used
+        #define I2S_DOUT      26   //pin25 voor AC101, //pin 26 voor ES8388
+        #define I2S_BCLK      27  // 27
+        #define I2S_LRC       25  //pin 26 voor AC101, //pin 25 voor ES8388
+        #define I2S_MCLK       0  // mostly not used  was 0 check staat op -1 in werkende versie zonder BT
 
-        #define I2C_DAC_SDA        -1  // some DACs are controlled via I2C
-        #define I2C_DAC_SCL        -1
-        #define SD_DETECT          -1  // some pins on special boards: Lyra, Olimex, A1S ...
-        #define HP_DETECT          -1
-        #define AMP_ENABLED        -1
+        #define I2C_DAC_SDA     33  // some DACs are controlled via I2C                      //rik was -1 of 33
+        #define I2C_DAC_SCL     32                                                          //rik was -1 of 32
+        #define SD_DETECT       34  // some pins on special boards: Lyra, Olimex, A1S ...    //rik was -1 of 34
+        #define HP_DETECT       39                                                           //rik was -1 of 39
+        #define AMP_ENABLED     21                                                           //rik was -1 of 21
 
-        #define BT_EMITTER_RX      33  // TX pin - KCX Bluetooth Transmitter    (-1 if not available)
-        #define BT_EMITTER_TX      36  // RX pin - KCX Bluetooth Transmitter    (-1 if not available)
-        #define BT_EMITTER_LINK    34  // high if connected                     (-1 if not available)
-        #define BT_EMITTER_MODE    13  // high transmit - low receive           (-1 if not available)
-        #define BT_EMITTER_CONNECT 32  // -1 if not used
+        #define BT_EMITTER_RX      -1  // TX pin - KCX Bluetooth Transmitter    (-1 if not available)
+        #define BT_EMITTER_TX      -1  // RX pin - KCX Bluetooth Transmitter    (-1 if not available)
+        #define BT_EMITTER_LINK    -1  // high if connected                     (-1 if not available)
+        #define BT_EMITTER_MODE    -1  // high transmit - low receive           (-1 if not available)
+        #define BT_EMITTER_CONNECT -1  // -1 if not used
 
         #define I2C_SDA            -1  // I2C, dala line for additional HW
         #define I2C_SCL            -1  // I2C, clock line for additional HW
@@ -400,11 +401,47 @@ inline int32_t indexOf(const char* haystack, const char* needle, int32_t startIn
     return pos - haystack;
 }
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 inline int32_t lastIndexOf(const char* haystack, const char needle) {
     const char* p = strrchr(haystack, needle);
     return (p ? p - haystack : -1);
 }
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+inline boolean strCompare(char* str1, char* str2) { // returns true if str1 == str2
+    if(!str1) return false;
+    if(!str2) return false;
+    if(strlen(str1) != strlen(str2)) return false;
+    boolean  f = true;
+    uint16_t i = strlen(str1);
+    while(i) {
+        i--;
+        if(str1[i] != str2[i]) {
+            f = false;
+            break;
+        }
+    }
+    return f;
+}
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+inline boolean strCompare(const char* str1, char* str2) { // returns true if str1 == str2
+    if(!str1) return false;
+    if(!str2) return false;
+    if(strlen(str1) != strlen(str2)) return false;
+    boolean  f = true;
+    uint16_t i = strlen(str1);
+    while(i) {
+        i--;
+        if(str1[i] != str2[i]) {
+            f = false;
+            break;
+        }
+    }
+    return f;
+}
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 inline int replacestr(char* line, const char* search, const char* replace) { /* returns number of strings replaced.*/
     int   count;
     char* sp; // start of pattern
@@ -546,38 +583,7 @@ inline void vector_clear_and_shrink(vector<char*>& vec) {
     vec.shrink_to_fit();
 }
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-class RegisterTable{
-public:
-    virtual const char* getName() = 0;
-    virtual bool isEnabled() = 0;
-    virtual void disable() = 0;
-    virtual bool positionXY(uint16_t, uint16_t) = 0;
-    virtual ~RegisterTable() {}
-};
-static std::vector<RegisterTable*> registertable_objects;
-static void register_object(RegisterTable* obj){
-    registertable_objects.push_back(obj);
-}
-inline void get_registered_names() {
-    for (auto obj : registertable_objects) {
-        printf(ANSI_ESC_WHITE "    registered object:" ANSI_ESC_YELLOW " %-17s" ANSI_ESC_WHITE " is enabled: %-5s\n", obj->getName(), obj->isEnabled()? ANSI_ESC_RED "yes" : ANSI_ESC_BLUE "no");
-    }
-}
-inline void disableAllObjects() {
-    for (auto obj : registertable_objects) {
-        obj->disable();
-    }
-}
-inline const char* isObjectClicked(uint16_t x, uint16_t y) {
-    for (auto obj : registertable_objects) {
-        if (obj->isEnabled() && obj->positionXY(x, y)) {
-            return obj->getName();
-        }
-    }
-    return NULL;
-}
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-class IR_buttons {
+class IR_buttons{
   private:
     settings_t* m_settings;
     uint8_t m_numOfIrButtons = 0;
@@ -777,7 +783,7 @@ class IR_buttons {
     }
 };
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-class SD_content {
+class SD_content{
 private:
     struct FileInfo {
         int32_t  fileSize;
@@ -1104,7 +1110,7 @@ extern __attribute__((weak)) void graphicObjects_OnRelease(const char* name, rel
 
 extern SemaphoreHandle_t mutex_display;
 extern SD_content _SD_content;
-class slider : public RegisterTable {
+class slider{
 private:
     int16_t     m_x = 0;
     int16_t     m_y = 0;
@@ -1129,7 +1135,6 @@ private:
     releasedArg m_ra;
 public:
     slider(const char* name){
-        register_object(this);
         if(name) m_name = x_ps_strdup(name);
         else     m_name = x_ps_strdup("slider");
         m_railHigh = 6;
@@ -1154,12 +1159,6 @@ public:
         m_middle_h = m_y + (m_h / 2);
         m_spotPos = (m_leftStop + m_rightStop) / 2; // in the middle
         m_objectInit = true;
-    }
-    const char* getName() {
-        return m_name;
-    }
-    bool isEnabled() {
-        return m_enabled;
     }
     bool positionXY(uint16_t x, uint16_t y){
         if(x < m_x) return false;
@@ -1237,7 +1236,7 @@ private:
     }
 };
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-class progressbar : public RegisterTable {
+class progressbar{
 private:
     int16_t     m_x = 0;
     int16_t     m_y = 0;
@@ -1259,7 +1258,6 @@ private:
     releasedArg m_ra;
 public:
     progressbar(const char* name){
-        register_object(this);
         if(name) m_name = x_ps_strdup(name);
         else     m_name = x_ps_strdup("progressbar");
         m_railHigh = 6;
@@ -1280,12 +1278,6 @@ public:
         m_maxVal = maxVal;
         m_enabled = false;
         m_objectInit = true;
-    }
-    const char* getName(){
-        return m_name;
-    }
-    bool isEnabled() {
-        return m_enabled;
     }
     bool positionXY(uint16_t x, uint16_t y){
         if(x < m_x) return false;
@@ -1365,7 +1357,7 @@ private:
     }
 };
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-class textbox : public RegisterTable {
+class textbox{
 private:
     int16_t         m_x = 0;
     int16_t         m_y = 0;
@@ -1389,7 +1381,6 @@ private:
     releasedArg     m_ra;
 public:
     textbox(const char* name){
-        register_object(this);
         if(name) m_name = x_ps_strdup(name);
         else     m_name = x_ps_strdup("textbox");
         m_bgColor = TFT_BLACK;
@@ -1409,12 +1400,6 @@ public:
         m_r_margin = w / 100;
         m_t_margin = 0;
         m_b_margin = h / 50;
-    }
-    const char* getName(){
-        return m_name;
-    }
-    bool isEnabled() {
-        return m_enabled;
     }
     void show(){
         m_enabled = true;
@@ -1488,7 +1473,7 @@ public:
     }
 };
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-class button1state : public RegisterTable { // click button
+class button1state{ // click button
 private:
     int16_t     m_x = 0;
     int16_t     m_y = 0;
@@ -1504,7 +1489,6 @@ private:
     releasedArg m_ra;
 public:
     button1state(const char* name){
-        register_object(this);
         if(name) m_name = x_ps_strdup(name);
         else     m_name = x_ps_strdup("button1state");
         m_bgColor = TFT_BLACK;
@@ -1525,12 +1509,6 @@ public:
         m_w = w; // width
         m_h = h; // high
         m_enabled = false;
-    }
-    const char* getName(){
-        return m_name;
-    }
-    bool isEnabled() {
-        return m_enabled;
     }
     void show(bool inactive = false){
         m_clicked = false;
@@ -1590,7 +1568,7 @@ public:
     }
 };
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-class button2state : public RegisterTable { // on off switch
+class button2state{ // on off switch
 private:
     int16_t     m_x = 0;
     int16_t     m_y = 0;
@@ -1609,7 +1587,6 @@ private:
     releasedArg m_ra;
 public:
     button2state(const char* name){
-        register_object(this);
         if(name) m_name = x_ps_strdup(name);
         else     m_name = x_ps_strdup("button2state");
         m_bgColor = TFT_BLACK;
@@ -1635,12 +1612,6 @@ public:
         m_w = w; // width
         m_h = h; // high
         m_enabled = false;
-    }
-    const char* getName(){
-        return m_name;
-    }
-    bool isEnabled() {
-        return m_enabled;
     }
     void show(bool inactive = false){
         m_clicked = false;
@@ -1730,7 +1701,7 @@ public:
     }
 };
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-class pictureBox : public RegisterTable {
+class pictureBox{
 private:
     int16_t     m_x = 0;
     int16_t     m_y = 0;
@@ -1745,7 +1716,6 @@ private:
     releasedArg m_ra;
 public:
     pictureBox(const char* name){
-        register_object(this);
         if(name) m_name = x_ps_strdup(name);
         else     m_name = x_ps_strdup("pictureBox");
         setPicturePath(NULL);
@@ -1759,12 +1729,6 @@ public:
         m_x = x; // x pos
         m_y = y; // y pos
         m_enabled = false;
-    }
-    const char* getName(){
-        return m_name;
-    }
-    bool isEnabled() {
-        return m_enabled;
     }
     bool show(){
         if(!GetImageSize(m_PicturePath)){
@@ -1863,7 +1827,7 @@ private:
     }
 };
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-class imgClock : public RegisterTable { // draw a clock in 12 or 24h format
+class imgClock{ // draw a clock in 12 or 24h format
 private:
     int16_t     m_x = 0;
     int16_t     m_y = 0;
@@ -1889,7 +1853,6 @@ private:
     releasedArg m_ra;
 public:
     imgClock(const char* name){
-        register_object(this);
         if(name) m_name = x_ps_strdup(name);
         else     m_name = x_ps_strdup("imgClock");
         m_bgColor = TFT_BLACK;
@@ -1907,12 +1870,6 @@ public:
         m_w = w; // width
         m_h = h; // high
         m_enabled = false;
-    }
-    const char* getName(){
-        return m_name;
-    }
-    bool isEnabled() {
-        return m_enabled;
     }
     void show(bool inactive = false){
         m_clicked = false;
@@ -1938,6 +1895,7 @@ public:
     bool enable(){
         return m_enabled = true;
     }
+
     void updateTime(uint16_t minuteOfTheDay, uint8_t weekday){
         // minuteOfTheDay counts at 00:00, from 0...23*60+59
         // weekDay So - 0, Mo - 1 ... Sa - 6
@@ -2027,7 +1985,7 @@ public:
     }
 };
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-class alarmClock : public RegisterTable { // draw a clock in 12 or 24h format
+class alarmClock{ // draw a clock in 12 or 24h format
 private:
     int16_t  m_x = 0;
     int16_t  m_y = 0;
@@ -2071,7 +2029,6 @@ private:
 
 public:
     alarmClock(const char* name){
-        register_object(this);
         if(name) m_name = x_ps_strdup(name);
         else     m_name = x_ps_strdup("alarmClock");
         m_bgColor = TFT_BLACK;
@@ -2095,12 +2052,6 @@ public:
         m_alarmdaysYPos    = m_y; // m_y;
         m_alarmtimeYPos    = m_alarmdaysYPos + 25 + 1;
         m_digitsYPos       = m_alarmtimeYPos + 25 + 1;
-    }
-    const char* getName(){
-        return m_name;
-    }
-    bool isEnabled() {
-        return m_enabled;
     }
     void show(bool inactive = false){
         m_clicked = false;
@@ -2334,7 +2285,7 @@ private:
     }
 };
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-class dlnaList : public RegisterTable {
+class dlnaList{
 private:
     int16_t                   m_x = 0;
     int16_t                   m_y = 0;
@@ -2342,7 +2293,7 @@ private:
     int16_t                   m_h = 0;
     int16_t                   m_oldX = 0;
     int16_t                   m_oldY = 0;
-    uint8_t*                  m_dlnaLevel;
+    uint8_t*                  m_dlnaLevel = 0;  //rik = 0 toegevoegd
     uint8_t                   m_fontSize = 0;
     uint8_t                   m_lineHight = 0;
     uint8_t                   m_browseOnRelease = 0;
@@ -2367,7 +2318,6 @@ private:
 
 public:
     dlnaList(const char* name, DLNA_Client *dlna, dlnaHistory* dh, uint8_t dhSize){
-        register_object(this);
         if(name) m_name = x_ps_strdup(name);
         else     m_name = x_ps_strdup("dlnaList");
         m_dlna    = dlna;
@@ -2395,12 +2345,6 @@ public:
         m_fontSize = fontSize;
         m_enabled = false;
         m_lineHight = m_h / 10;
-    }
-    const char* getName(){
-        return m_name;
-    }
-    bool isEnabled() {
-        return m_enabled;
     }
     void show(int8_t number, DLNA_Client::dlnaServer_t dlnaServer, DLNA_Client::srvContent_t srvContent, uint8_t* dlnaLevel,  uint16_t maxItems){
         m_browseOnRelease = 0;
@@ -2666,7 +2610,7 @@ exit:
     }
 };
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-class fileList : public RegisterTable {
+class fileList{
 private:
     int16_t     m_x = 0;
     int16_t     m_y = 0;
@@ -2692,7 +2636,6 @@ private:
     releasedArg m_ra;
 public:
     fileList(const char* name){
-        register_object(this);
         if(name) m_name  = x_ps_strdup(name);
         else     m_name  = x_ps_strdup("fileList");
         m_fileItemsPos   = x_ps_malloc(30);
@@ -2723,12 +2666,6 @@ public:
         m_lineHight = m_h / 10;
         m_fontSize = fontSize;
         m_enabled = false;
-    }
-    const char* getName(){
-        return m_name;
-    }
-    bool isEnabled() {
-        return m_enabled;
     }
     void show(const char* cur_AudioFolder, uint16_t curAudioFileNr){
         m_browseOnRelease = 0;
@@ -2912,7 +2849,7 @@ exit:
 };
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 extern stationManagement   staMgnt;
-class stationsList : public RegisterTable {
+class stationsList{
 private:
     int16_t     m_x = 0;
     int16_t     m_y = 0;
@@ -2937,7 +2874,6 @@ private:
     releasedArg m_ra;
 public:
     stationsList(const char* name){
-        register_object(this);
         if(name) m_name = x_ps_strdup(name);
         else     m_name = x_ps_strdup("stationsList");
         m_bgColor = TFT_BLACK;
@@ -2963,12 +2899,6 @@ public:
         m_fontSize = fontSize;
         m_curSstationNr = curStationNr;
         m_enabled = false;
-    }
-    const char* getName(){
-        return m_name;
-    }
-    bool isEnabled() {
-        return m_enabled;
     }
     void show(){
         m_clicked = false;
@@ -3157,7 +3087,7 @@ public:
 
 };
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-class vuMeter : public RegisterTable {
+class vuMeter{
 private:
     int16_t     m_x = 0;
     int16_t     m_y = 0;
@@ -3178,7 +3108,6 @@ private:
     uint16_t    m_real_h = 0;
 public:
     vuMeter(const char* name){
-        register_object(this);
         if(name) m_name = x_ps_strdup(name);
         else     m_name = x_ps_strdup("vuMeter");
         m_bgColor = TFT_BLACK;
@@ -3200,12 +3129,6 @@ public:
 #endif
         m_w = 2 *  m_segm_w  +  3 * m_frameSize;
         m_h = 12 * m_segm_h + 13 * m_frameSize;
-    }
-    const char* getName(){
-        return m_name;
-    }
-    bool isEnabled() {
-        return m_enabled;
     }
     void show(){
         m_enabled = true;
@@ -3292,7 +3215,7 @@ private:
     };
 };
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-class displayHeader : public RegisterTable {
+class displayHeader{
 private:
     int16_t     m_x = 0;
     int16_t     m_y = 0;
@@ -3321,8 +3244,8 @@ private:
     uint8_t     m_time_ch_w = 9;
 #else // 480 x 320px
     uint16_t    m_item_x = 6;
-    uint16_t    m_item_w = 274;
-    uint16_t    m_volume_x = 280;
+    uint16_t    m_item_w = 221;              //rik was 274
+    uint16_t    m_volume_x = 227;            //rik was 280
     uint16_t    m_volume_w = 100;
     uint16_t    m_time_x = 380;
     uint16_t    m_time_w = 100;
@@ -3331,7 +3254,6 @@ private:
 #endif
 public:
     displayHeader(const char* name, uint8_t fontSize){
-        register_object(this);
         if(name) m_name = x_ps_strdup(name);
         else     m_name = x_ps_strdup("displayHeader");
         m_bgColor = TFT_BLACK;
@@ -3347,12 +3269,6 @@ public:
         m_w = w;
         m_h = h;
     }
-    const char* getName(){
-        return m_name;
-    }
-    bool isEnabled() {
-        return m_enabled;
-    }
     void show(){
         m_enabled = true;
         m_clicked = false;
@@ -3364,9 +3280,6 @@ public:
     void hide(){
         tft.fillRect(m_x, m_y, m_w, m_h, m_bgColor);
         m_enabled = false;
-    }
-    void enable(){
-        m_enabled = true;
     }
     void disable(){
         m_enabled = false;
@@ -3455,7 +3368,7 @@ public:
 private:
 };
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-class displayFooter : public RegisterTable {
+class displayFooter{
 private:
     int16_t     m_x = 0;
     int16_t     m_y = 0;
@@ -3502,7 +3415,6 @@ private:
 #endif
 public:
     displayFooter(const char* name, uint8_t fontSize){
-        register_object(this);
         if(name) m_name = x_ps_strdup(name);
         else     m_name = x_ps_strdup("displayFooter");
         m_bgColor = TFT_BLACK;
@@ -3517,12 +3429,6 @@ public:
         m_y = y; // y pos
         m_w = w;
         m_h = h;
-    }
-    const char* getName(){
-        return m_name;
-    }
-    bool isEnabled() {
-        return m_enabled;
     }
     void show(){
         m_enabled = true;
@@ -3539,9 +3445,6 @@ public:
     void hide(){
         tft.fillRect(m_x, m_y, m_w, m_h, m_bgColor);
         m_enabled = false;
-    }
-    void enable(){
-        m_enabled = true;
     }
     void disable(){
         m_enabled = false;
@@ -3777,32 +3680,8 @@ const char ir_buttons_json[] =
     "{\"19\":\"-1\",\"label\":\"-\"}]";
 
 const char stations_json[] =
-    "[[\"*\",\"D\",\"0N 70s\",\"http://0n-70s.radionetz.de:8000/0n-70s.mp3\"],"
-    "[\"*\",\"D\",\"0N 80s\",\"http://0n-80s.radionetz.de:8000/0n-80s.mp3\"],"
-    "[\"*\",\"D\",\"0N 90s\",\"http://0n-90s.radionetz.de:8000/0n-90s.mp3\"],"
-    "[\"*\",\"D\",\"0N Charts\",\"http://0n-charts.radionetz.de:8000/0n-charts.mp3\"],"
-    "[\"*\",\"D\",\"0N Dance\",\"http://0n-dance.radionetz.de:8000/0n-dance.mp3\"],"
-    "[\"*\",\"D\",\"0N Disco\",\"http://0n-disco.radionetz.de:8000/0n-disco.mp3\"],"
-    "[\"*\",\"D\",\"1000 Oldies\",\"http://c3.auracast.net:8010/stream\"],"
-    "[\"*\",\"D\",\"Eurodance\",\"http://www.laut.fm/eurodance\"],"
-    "[\"\",\"D\",\"extra-radio 88.0\",\"https://www.extra-radio.de/stream/listen.m3u\"],"
-    "[\"*\",\"D\",\"Hitradio SKW\",\"http://server4.streamserver24.com:2199/tunein/hitradio.asx\"],"
-    "[\"*\",\"D\",\"MacSlon's Irish Pub Radio\",\"http://macslons-irish-pub-radio.stream.laut.fm/macslons-irish-pub-radio\"],"
-    "[\"\",\"GR\",\"Άνοιξη 100.7\",\"http://solid1.streamupsolutions.com:55023/stream\"],"
-    "[\"\",\"RU\",\"НАШЕ Радио\",\"http://nashe1.hostingradio.ru/nashe-128.mp3\"],"
-    "[\"\",\"RU\",\"Радио Русские Песни\",\"http://listen.rusongs.ru/ru-mp3-128\"],"
-    "[\"\",\"BG\",\"Свежа България\",\"http://31.13.223.148:8000/fresh.mp3\"],"
-    "[\"\",\"CH\",\"SWISS POP\",\"https://stream.srg-ssr.ch/rsp/aacp_48.asx\"],"
-    "[\"\",\"BG\",\"BGRADIO\",\"http://play.global.audio/bgradio_low.ogg\"],"
-    "[\"\",\"D\",\"knixx.fm\",\"http://s1.knixx.fm:5347/dein_webradio_vbr.opus\"],"
-    "[\"*\",\"D\",\"- 0 N - Christmas on Radio\",\"https://0n-christmas.radionetz.de/0n-christmas.aac\"],"
-    "[\"*\",\"UK\",\"BBC 6music\",\"http://as-hls-ww-live.akamaized.net/pool_904/live/ww/bbc_6music/bbc_6music.isml/bbc_6music-audio=96000.norewind.m3u8\"],"
-    "[\"\",\"D\",\"- 0 N - Movies on Radio\",\"https://0n-movies.radionetz.de/0n-movies.mp3\"],"
-    "[\"*\",\"D\",\"- 0 N - Top 40 on Radio\",\"https://0n-top40.radionetz.de/0n-top40.mp3\"],"
-    "[\"\",\"D\",\"ROCKANTENNE Alternative (mp3)\",\"https://stream.rockantenne.de/alternative/stream/mp3\"],"
-    "[\"\",\"P\",\"Gra Wrocław\",\"http://rmfstream2.interia.pl:8000/radio_gra_wroc\"],"
-    "[\"*\",\"RU\",\"Classic EuroDisco Радио\",\"https://live.radiospinner.com/clsscrdsc-96\"],"
-    "[\"*\",\"D\",\"Hit Radio FFH - Soundtrack (AAC+)\",\"http://streams.ffh.de/ffhchannels/aac/soundtrack.m3u\"]]";
+    "[[\"*\",\"BE\",\"Radio 1\",\"http://icecast-servers.vrtcdn.be/radio1.aac\"],"
+    "[\"*\",\"BE\",\"RG\",\"https://streaming.exclusive.radio/er/rorygallagher/icecast.audio\"]]";
 
 const char aesKey [] = "mysecretkey12345";
 

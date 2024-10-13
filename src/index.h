@@ -437,7 +437,7 @@ var I2S_eq_DB = ['-40', '-37', '-34', '-31', '-28', '-25', '-22', '-19',
 
 var I2S_eq_Val = [-40, -37, -34, -31, -28, -25, -22, -19, -16, -13, -10, -7, -4, 0, +3, +6]
 
-var tft_size = 0        // (0)320x240, (1)480x320
+var tft_size = 1        // (0)320x240, (1)480x320  rik was 0
 var ir_buttons
 
 
@@ -2499,6 +2499,23 @@ function clear_BT_memItems(){
                 </form>
             </fieldset>
         </div>
+		<div style="height: 66px; margin-top: 5px; display: flex;">	
+			<div style="flex: 0 0 215px;">
+                <img src="SD/png/Button_Volume_Down_Blue.png" alt="Vol_down"
+                    onmousedown="this.src='SD/png/Button_Volume_Down_Yellow.png'"
+                    ontouchstart="this.src='SD/png/Button_Volume_Down_Yellow.png'"
+                    onmouseup="this.src='SD/png/Button_Volume_Down_Blue.png'"
+                    ontouchend="this.src='SD/png/Button_Volume_Down_Blue.png'"
+                    onclick="socket.send('downvolume')">
+                <img src="SD/png/Button_Volume_Up_Blue.png" alt="Vol_up"
+					onmousedown="this.src='SD/png/Button_Volume_Up_Yellow.png'"
+					ontouchstart="this.src='SD/png/Button_Volume_Up_Yellow.png'"
+					onmouseup="this.src='SD/png/Button_Volume_Up_Blue.png'"
+					ontouchend="this.src='SD/png/Button_Volume_Up_Blue.png'"
+					onclick="socket.send('upvolume')">						
+											
+			</div>		
+		</div>
     </div>
 
 <!--===============================================================================================================================================-->
@@ -2553,9 +2570,25 @@ function clear_BT_memItems(){
                     </div>
                 </div>
             </fieldset>
-        </div>
-
-    </div>
+		</div>
+		<div style="height: 66px; margin-top: 5px; display: flex;">	
+			<div style="flex: 0 0 215px;">
+                <img src="SD/png/Button_Volume_Down_Blue.png" alt="Vol_down"
+                    onmousedown="this.src='SD/png/Button_Volume_Down_Yellow.png'"
+                    ontouchstart="this.src='SD/png/Button_Volume_Down_Yellow.png'"
+                    onmouseup="this.src='SD/png/Button_Volume_Down_Blue.png'"
+                    ontouchend="this.src='SD/png/Button_Volume_Down_Blue.png'"
+                    onclick="socket.send('downvolume')">
+                <img src="SD/png/Button_Volume_Up_Blue.png" alt="Vol_up"
+					onmousedown="this.src='SD/png/Button_Volume_Up_Yellow.png'"
+					ontouchstart="this.src='SD/png/Button_Volume_Up_Yellow.png'"
+					onmouseup="this.src='SD/png/Button_Volume_Up_Blue.png'"
+					ontouchend="this.src='SD/png/Button_Volume_Up_Blue.png'"
+					onclick="socket.send('upvolume')">						
+											
+			</div>		
+		</div>		
+	</div>		
 
 <!--===============================================================================================================================================-->
     <div id="tab-content5">
