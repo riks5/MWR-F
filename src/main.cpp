@@ -4,7 +4,7 @@
     MiniWebRadio -- Webradio receiver for ESP32
 
     first release on 03/2017                                                                                                      */String Version ="\
-    Version 3.5f - Oct 12/2024                                                                                                                       ";
+    Version 3.5h - Oct 14/2024                                                                                                                       ";
 
 /*  2.8" color display (320x240px) with controller ILI9341 or HX8347D (SPI) or
     3.5" color display (480x320px) with controller ILI9486 or ILI9488 (SPI)
@@ -2246,11 +2246,15 @@ void changeState(int32_t state){
                 btn_PL_prevFile.show(); btn_PL_nextFile.show(); btn_PL_ready.show(); btn_PL_playAll.show(); btn_PL_shuffle.show(); btn_PL_fileList.show(); btn_PL_radio.show(); btn_PL_off.show();
             }
             if(_playerSubmenue == 1){
-                pgb_PL_progress.setValue(0);
-                pgb_PL_progress.show();
+                btn_PL_fileList.hide();
+                btn_PL_radio.hide();
+                btn_PL_off.hide();
+                pgb_PL_progress.setValue(0); pgb_PL_progress.show();
                 sdr_PL_volume.show();
             //    txt_PL_fName.setText("");
-                btn_PL_Mute.show(); btn_PL_pause.setOff(); btn_PL_pause.show(); btn_PL_cancel.show(); btn_PL_playNext.show();  btn_PL_playPrev.show(); txt_PL_fName.show();
+                btn_PL_Mute.show();
+                btn_PL_pause.setOff(); btn_PL_pause.show();
+                btn_PL_cancel.show(); btn_PL_playNext.show(); btn_PL_playPrev.show(); txt_PL_fName.show();
             }
             break;
         }
@@ -2907,43 +2911,47 @@ void ir_number(uint16_t num) {
 }
 void ir_short_key(uint8_t key) {
     SerialPrintfln("ir_code: ..  " ANSI_ESC_YELLOW "short pressed key nr: " ANSI_ESC_BLUE "%02i", key);
-    // if(_f_sleeping == true && key != 16) return;
-    if(_f_sleeping == true && key == 17) {
+    if(_f_sleeping == true){
         wake_up();
         return;
-    } // awake
+    }
     if(_state == IR_SETTINGS) return;  // nothing todo
 
     switch(key) {
-        case 15:    if(_state == SLEEP) {changeState(RADIO); break;} // MODE -- CLOCK <-> RADIO
+        case 15:    // MODE
+                    if(_state == SLEEP) {changeState(RADIO); break;} //  RADIO -> STATIONSLIST -> PLAYER -> DLNA -> CLOCK -> SLEEP
                     if(_state == RADIO) {changeState(STATIONSLIST); break;}
-                    if(_state == STATIONSLIST) {changeState(PLAYER); break;}
+                    if(_state == STATIONSLIST) { _playerSubmenue = 0; changeState(PLAYER); break;}
                     if(_state == PLAYER) {changeState(DLNA); break;}
                     if(_state == DLNA) {changeState(CLOCK); break;}
-                    if(_state == CLOCK) {changeState(RADIO); break;}
+                    if(_state == CLOCK) {changeState(SLEEP); break;}
                     break;
-        case 14:    if(_state == STATIONSLIST) {lst_RADIO.prevStation(); setTimeCounter(4); break;}
-                    upvolume(); // ARROW UP -- VOLUME+
+        case 14:    // ARROW UP
+                    if(_state == STATIONSLIST) {lst_RADIO.prevStation(); setTimeCounter(4); break;} // station--
+                    upvolume(); // VOLUME++
                     break;
-        case 13:    if(_state == STATIONSLIST) {lst_RADIO.nextStation(); setTimeCounter(4); break;}
-                    downvolume(); // ARROW DOWN -- VOLUME-
+        case 13:    // ARROW DOWN
+                    if(_state == STATIONSLIST) {lst_RADIO.nextStation(); setTimeCounter(4); break;} // station++
+                    downvolume(); // VOLUME--
                     break;
-        case 11:    if(_state == STATIONSLIST) {lst_RADIO.nextPage(); setTimeCounter(4); break;}
-                    if(_state == RADIO) {nextFavStation(); break;} // ARROW RIGHT -- NEXT STATION
+        case 11:    // ARROW RIGHT
+                    if(_state == STATIONSLIST) {lst_RADIO.nextPage(); setTimeCounter(4); break;}  // next page
+                    if(_state == RADIO) {nextFavStation(); break;} // NEXT STATION
                     if(_state == CLOCK) {nextFavStation(); changeState(RADIO); _f_switchToClock = true; break;}
                     if(_state == SLEEP) {display_sleeptime(1); break;}
                     break;
-        case 12:    if(_state == STATIONSLIST) {lst_RADIO.prevPage(); setTimeCounter(4); break;}
-                    if(_state == RADIO) {prevFavStation(); break;} // ARROW LEFT -- PREV STATION
+        case 12:    // ARROW LEFT
+                    if(_state == STATIONSLIST) {lst_RADIO.prevPage(); setTimeCounter(4); break;}  // prev page
+                    if(_state == RADIO) {prevFavStation(); break;} // PREV STATION
                     if(_state == CLOCK) {prevFavStation(); changeState(RADIO); _f_switchToClock = true; break;}
                     if(_state == SLEEP) {display_sleeptime(-1); break;}
                     break;
         case 10:    muteChanged(!_f_mute); // MUTE
                     break;
-        case 16:    if(_f_sleeping == true){wake_up(); break;} // OK
+        case 16:    // OK
                     if(_state == STATIONSLIST) {changeState(RADIO); setStationByNumber(lst_RADIO.getSelectedStation()); break;}
-                    if(_state == RADIO) {changeState(SLEEP); break;} // OFF TIMER
-                    if(_state == SLEEP) {changeState(RADIO); break;}
+                    if(_state == RADIO) {break;}
+                    if(_state == SLEEP) {dispFooter.updateOffTime(_sleeptime); _radioSubmenue = 0; changeState(RADIO); break;}
                     break;
         default:    break;
     }
@@ -2951,6 +2959,10 @@ void ir_short_key(uint8_t key) {
 void ir_long_key(int8_t key) {
     SerialPrintfln("ir_code: ..  " ANSI_ESC_YELLOW "long pressed key nr: " ANSI_ESC_BLUE "%02i", key);
     if(key == 20) fall_asleep(); // long mute
+    if(key == 21){ // cancel
+        if(_state == STATIONSLIST) {_radioSubmenue = 0; changeState(RADIO);}
+        if(_state == SLEEP)        {_radioSubmenue = 0; changeState(RADIO);}
+    }
 }
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 // Event from TouchPad
@@ -3203,7 +3215,7 @@ void WEBSRV_onCommand(const String cmd, const String param, const String arg){  
     if(cmd == "getTimeZoneName"){   webSrv.reply(_TZName, webSrv.TEXT); return;}
 
     if(cmd == "change_state"){      if     (!strcmp(param.c_str(), "RADIO")       && _state != RADIO)       {setStation(_cur_station); changeState(RADIO); return;}
-                                    else if(!strcmp(param.c_str(), "PLAYER")      && _state != PLAYER)      {stopSong(); changeState(PLAYER); return;}
+                                    else if(!strcmp(param.c_str(), "PLAYER")      && _state != PLAYER)      {stopSong(); _playerSubmenue = 0; changeState(PLAYER); return;}
                                     else if(!strcmp(param.c_str(), "DLNA")        && _state != DLNA)        {stopSong(); changeState(DLNA);   return;}
                                     else if(!strcmp(param.c_str(), "BLUETOOTH")   && _state != BLUETOOTH)   {changeState(BLUETOOTH); return;}
                                     else if(!strcmp(param.c_str(), "IR_SETTINGS") && _state != IR_SETTINGS) {changeState(IR_SETTINGS); return;}
@@ -3637,7 +3649,7 @@ void graphicObjects_OnRelease(const char* name, releasedArg ra) {
         if(strcmp(name, "btn_RA_prevSta") == 0)  {prevFavStation(); dispFooter.updateStation(_cur_station); return;}
         if(strcmp(name, "btn_RA_nextSta") == 0)  {nextFavStation(); dispFooter.updateStation(_cur_station); return;}
         if(strcmp(name, "btn_RA_staList") == 0)  {_radioSubmenue = 0; changeState(STATIONSLIST); return;}
-        if(strcmp(name, "btn_RA_player") == 0)   {_radioSubmenue = 0; stopSong(); changeState(PLAYER); return;}
+        if(strcmp(name, "btn_RA_player") == 0)   {_radioSubmenue = 0; stopSong(); _playerSubmenue = 0; changeState(PLAYER); return;}
         if(strcmp(name, "btn_RA_dlna") == 0)     {_radioSubmenue = 0; stopSong(); changeState(DLNA); return;}
         if(strcmp(name, "btn_RA_clock") == 0)    {_radioSubmenue = 0; changeState(CLOCK); return;}
         if(strcmp(name, "btn_RA_sleep") == 0)    {_radioSubmenue = 0; changeState(SLEEP); return;}
@@ -3658,11 +3670,11 @@ void graphicObjects_OnRelease(const char* name, releasedArg ra) {
         if(strcmp(name, "btn_PL_cancel") == 0)   {_playerSubmenue = 0; stopSong(); changeState(PLAYER); return;}
         if(strcmp(name, "btn_PL_prevFile") == 0) {return;}
         if(strcmp(name, "btn_PL_nextFile") == 0) {return;}
-        if(strcmp(name, "btn_PL_ready") == 0)    {_playerSubmenue = 1; SD_playFile(_cur_AudioFolder, _SD_content.getColouredSStringByIndex(_cur_AudioFileNr)); changeState(PLAYER); showAudioFileNumber(); return;}
-        if(strcmp(name, "btn_PL_playAll") == 0)  {_playerSubmenue = 1; _f_shuffle = false; preparePlaylistFromSDFolder(_cur_AudioFolder); processPlaylist(true); changeState(PLAYER); return;}
-        if(strcmp(name, "btn_PL_shuffle") == 0)  {_playerSubmenue = 1; _f_shuffle = true; preparePlaylistFromSDFolder(_cur_AudioFolder); processPlaylist(true); changeState(PLAYER); return;}
-        if(strcmp(name, "btn_PL_fileList") == 0) {_playerSubmenue = 1; _SD_content.listDir(_cur_AudioFolder, true, false); changeState(AUDIOFILESLIST); return;}
-        if(strcmp(name, "btn_PL_radio") == 0)    {_playerSubmenue = 0; setStation(_cur_station); changeState(RADIO); return;}
+        if(strcmp(name, "btn_PL_ready") == 0)    { SD_playFile(_cur_AudioFolder, _SD_content.getColouredSStringByIndex(_cur_AudioFileNr)); _playerSubmenue = 1; changeState(PLAYER); showAudioFileNumber(); return;}
+        if(strcmp(name, "btn_PL_playAll") == 0)  { _f_shuffle = false; preparePlaylistFromSDFolder(_cur_AudioFolder); processPlaylist(true); _playerSubmenue = 1; changeState(PLAYER); return;}
+        if(strcmp(name, "btn_PL_shuffle") == 0)  { _f_shuffle = true; preparePlaylistFromSDFolder(_cur_AudioFolder); processPlaylist(true); _playerSubmenue = 1; changeState(PLAYER); return;}
+        if(strcmp(name, "btn_PL_fileList") == 0) {_SD_content.listDir(_cur_AudioFolder, true, false);_playerSubmenue = 1;  changeState(AUDIOFILESLIST); return;}
+        if(strcmp(name, "btn_PL_radio") == 0)    {setStation(_cur_station);_playerSubmenue = 0;  changeState(RADIO); return;}
         if(strcmp(name, "btn_PL_off") == 0)      {fall_asleep(); return;}
         if(strcmp(name, "sdr_PL_volume") == 0)   {return;}
         if(strcmp(name, "btn_PL_playNext") == 0) {SD_playFile(_cur_AudioFolder, _SD_content.getColouredSStringByIndex(_cur_AudioFileNr)); showAudioFileNumber(); return;}
