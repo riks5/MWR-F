@@ -1502,9 +1502,9 @@ void setup() {
     ticker100ms.attach(0.1, timer100ms);
     /* rik if(BT_EMITTER_CONNECT != -1){
         pinMode(BT_EMITTER_CONNECT, OUTPUT);
-        digitalWrite(BT_EMITTER_CONNECT, LOW); vTaskDelay(100); digitalWrite(BT_EMITTER_CONNECT, HIGH);
+        digitalWrite(BT_EMITTER_CONNECT, LOW); vTaskDelay(100); digitalWrite(BT_EMITTER_CONNECT, HIGH); // POWER_ON
 		_f_BTcurPowerState = true;
-		} // POWER_ON
+    }
      bt_emitter.begin(); */
 
     _dlnaLevel = 0;
