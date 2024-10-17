@@ -336,6 +336,7 @@
 									<listOptionValue builtIn="false" value="AUDIOCONTROLTASK_PRIO=2"/>
 									<listOptionValue builtIn="false" value="BOARD_HAS_PSRAM=1"/>
 									<listOptionValue builtIn="false" value="MONITOR_SPEED=115200"/>
+									<listOptionValue builtIn="false" value="SHA_SIZE=20"/>
 									<listOptionValue builtIn="false" value="ESP_PLATFORM"/>
 									<listOptionValue builtIn="false" value="IDF_VER=&quot;v5.1.4-828-g33fbade6b8-dirty&quot;"/>
 									<listOptionValue builtIn="false" value="MBEDTLS_CONFIG_FILE=&quot;mbedtls/esp_config.h&quot;"/>
@@ -673,6 +674,7 @@
 									<listOptionValue builtIn="false" value="AUDIOCONTROLTASK_PRIO=2"/>
 									<listOptionValue builtIn="false" value="BOARD_HAS_PSRAM=1"/>
 									<listOptionValue builtIn="false" value="MONITOR_SPEED=115200"/>
+									<listOptionValue builtIn="false" value="SHA_SIZE=20"/>
 									<listOptionValue builtIn="false" value="ESP_PLATFORM"/>
 									<listOptionValue builtIn="false" value="IDF_VER=&quot;v5.1.4-828-g33fbade6b8-dirty&quot;"/>
 									<listOptionValue builtIn="false" value="MBEDTLS_CONFIG_FILE=&quot;mbedtls/esp_config.h&quot;"/>
@@ -1010,6 +1012,7 @@
 									<listOptionValue builtIn="false" value="AUDIOCONTROLTASK_PRIO=2"/>
 									<listOptionValue builtIn="false" value="BOARD_HAS_PSRAM=1"/>
 									<listOptionValue builtIn="false" value="MONITOR_SPEED=115200"/>
+									<listOptionValue builtIn="false" value="SHA_SIZE=20"/>
 									<listOptionValue builtIn="false" value="ESP_PLATFORM"/>
 									<listOptionValue builtIn="false" value="IDF_VER=&quot;v5.1.4-828-g33fbade6b8-dirty&quot;"/>
 									<listOptionValue builtIn="false" value="MBEDTLS_CONFIG_FILE=&quot;mbedtls/esp_config.h&quot;"/>
@@ -1373,6 +1376,7 @@
 									<listOptionValue builtIn="false" value="AUDIOCONTROLTASK_PRIO=2"/>
 									<listOptionValue builtIn="false" value="BOARD_HAS_PSRAM=1"/>
 									<listOptionValue builtIn="false" value="MONITOR_SPEED=115200"/>
+									<listOptionValue builtIn="false" value="SHA_SIZE=20"/>
 									<listOptionValue builtIn="false" value="ESP_PLATFORM"/>
 									<listOptionValue builtIn="false" value="IDF_VER=&quot;v5.1.4-828-g33fbade6b8-dirty&quot;"/>
 									<listOptionValue builtIn="false" value="MBEDTLS_CONFIG_FILE=&quot;mbedtls/esp_config.h&quot;"/>
@@ -1710,6 +1714,7 @@
 									<listOptionValue builtIn="false" value="AUDIOCONTROLTASK_PRIO=2"/>
 									<listOptionValue builtIn="false" value="BOARD_HAS_PSRAM=1"/>
 									<listOptionValue builtIn="false" value="MONITOR_SPEED=115200"/>
+									<listOptionValue builtIn="false" value="SHA_SIZE=20"/>
 									<listOptionValue builtIn="false" value="ESP_PLATFORM"/>
 									<listOptionValue builtIn="false" value="IDF_VER=&quot;v5.1.4-828-g33fbade6b8-dirty&quot;"/>
 									<listOptionValue builtIn="false" value="MBEDTLS_CONFIG_FILE=&quot;mbedtls/esp_config.h&quot;"/>
@@ -2047,6 +2052,7 @@
 									<listOptionValue builtIn="false" value="AUDIOCONTROLTASK_PRIO=2"/>
 									<listOptionValue builtIn="false" value="BOARD_HAS_PSRAM=1"/>
 									<listOptionValue builtIn="false" value="MONITOR_SPEED=115200"/>
+									<listOptionValue builtIn="false" value="SHA_SIZE=20"/>
 									<listOptionValue builtIn="false" value="ESP_PLATFORM"/>
 									<listOptionValue builtIn="false" value="IDF_VER=&quot;v5.1.4-828-g33fbade6b8-dirty&quot;"/>
 									<listOptionValue builtIn="false" value="MBEDTLS_CONFIG_FILE=&quot;mbedtls/esp_config.h&quot;"/>
