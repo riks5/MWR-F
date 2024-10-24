@@ -2747,13 +2747,13 @@ endbrightness:
             audioForceMono(f_mono);
             f_mono? log_w("mono"): log_w("stereo");
         }
-        if(r.startsWith("btp")){ // bluetooth RX/TX protocol
-            uint16_t i = 0;
-            while(bt_emitter.list_protokol(i)){
-                log_e("%s", bt_emitter.list_protokol(i));
-                i++;
-            }
-        }
+       //rik  if(r.startsWith("btp")){ // bluetooth RX/TX protocol
+       //rik      uint16_t i = 0;
+        //rik    while(bt_emitter.list_protokol(i)){
+        //rik        log_e("%s", bt_emitter.list_protokol(i));
+         //rik       i++;
+         //rik    }
+        //rik}
     }
 }
 
